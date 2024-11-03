@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: email-validator-proper
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: email-validator
+      tier: proper
+  template:
+    metadata:
+      labels:
+        app: email-validator
+        tier: proper
+    spec:
+      containers:
+      - name: email-validator-proper
+        image: email-validator-proper:latest
+        imagePullPolicy: Never  # Add this line
+        ports:
+        - containerPort: 5000
+        readinessProbe:
+          httpGet:
+            path: /healthz
+            port: 5000
+          initialDelaySeconds: 5
+          periodSeconds: 5

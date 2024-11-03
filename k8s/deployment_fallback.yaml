@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: email-validator-fallback
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: email-validator
+      tier: fallback
+  template:
+    metadata:
+      labels:
+        app: email-validator
+        tier: fallback
+    spec:
+      containers:
+      - name: email-validator-fallback
+        image: email-validator-fallback:latest
+        imagePullPolicy: Never  # Add this line
+        ports:
+        - containerPort: 5000
+        readinessProbe:
+          httpGet:
+            path: /healthz
+            port: 5000
+          initialDelaySeconds: 5
+          periodSeconds: 5
