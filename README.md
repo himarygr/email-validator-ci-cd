@@ -28,8 +28,8 @@ The Email Validator is a simple web API that checks the validity of email addres
 ### 1. Clone the Repository
 
 ```bash
-git clone https://your-repository-url.git
-cd your-repository-directory
+git clone https://github.com/himarygr/email-validator-ci-cd.git
+cd email-validator-ci-cd
 ```
 
 ### 2. Start Minikube
