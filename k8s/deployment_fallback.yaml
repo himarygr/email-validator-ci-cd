@@ -17,7 +17,7 @@ spec:
       containers:
       - name: email-validator-fallback
         image: email-validator-fallback:latest
-        imagePullPolicy: Never  # Add this line
+        imagePullPolicy: Never 
         ports:
         - containerPort: 5000
         readinessProbe:
